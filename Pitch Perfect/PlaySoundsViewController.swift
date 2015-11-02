@@ -39,9 +39,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     func playWithRate(rate: Float) {
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopAudio()
         audioPlayer.currentTime = 0.0
         audioPlayer.rate = rate
         audioPlayer.play()
@@ -52,7 +50,12 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func stopAll(sender: AnyObject) {
+        stopAudio()
+    }
+    func stopAudio() {
         audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
     }
     
     @IBAction func playHighPitch(sender: AnyObject) {
@@ -63,20 +66,31 @@ class PlaySoundsViewController: UIViewController {
         playAudioWithVariablePitch(-1000)
     }
     
+    @IBAction func playWithReverb(sender: AnyObject) {
+        playAudioWithReverb()
+    }
+    
     func playAudioWithVariablePitch(pitch: Float) {
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        let changePitchEffect = AVAudioUnitTimePitch()
+        changePitchEffect.pitch = pitch
+        playSound(changePitchEffect)
+    }
+    
+    func playAudioWithReverb() {
+        let unitReverb = AVAudioUnitReverb()
+        unitReverb.wetDryMix = 50
+        playSound(unitReverb)
+    }
+    
+    func playSound(audioEffectNode: AVAudioNode) {
+        stopAudio()
         
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attachNode(audioEffectNode)
         
-        let changePitchEffect = AVAudioUnitTimePitch()
-        changePitchEffect.pitch = pitch
-        audioEngine.attachNode(changePitchEffect)
-        
-        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        audioEngine.connect(audioPlayerNode, to: audioEffectNode, format: nil)
+        audioEngine.connect(audioEffectNode, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         try! audioEngine.start()

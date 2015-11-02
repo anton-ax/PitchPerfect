@@ -60,13 +60,13 @@
                                 <exclude reference="sMP-6f-baT"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="GyQ-jg-loa"/>
+                                <exclude reference="ntn-3t-eUX"/>
                                 <exclude reference="Cbu-EJ-Fwf"/>
                                 <exclude reference="Mdk-FE-h76"/>
                                 <exclude reference="LmU-eE-rdG"/>
                                 <exclude reference="bdH-oc-xNC"/>
                                 <exclude reference="lwR-xI-FqZ"/>
-                                <exclude reference="GyQ-jg-loa"/>
-                                <exclude reference="ntn-3t-eUX"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -76,13 +76,13 @@
                                 <include reference="sMP-6f-baT"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="GyQ-jg-loa"/>
+                                <include reference="ntn-3t-eUX"/>
                                 <include reference="Cbu-EJ-Fwf"/>
                                 <include reference="Mdk-FE-h76"/>
                                 <include reference="LmU-eE-rdG"/>
                                 <include reference="bdH-oc-xNC"/>
                                 <include reference="lwR-xI-FqZ"/>
-                                <include reference="GyQ-jg-loa"/>
-                                <include reference="ntn-3t-eUX"/>
                             </mask>
                         </variation>
                     </view>
@@ -135,7 +135,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwX-aP-6b1">
-                                <rect key="frame" x="62" y="289" width="100" height="100"/>
+                                <rect key="frame" x="62" y="258" width="100" height="100"/>
                                 <animations/>
                                 <state key="normal" image="chipmunk"/>
                                 <connections>
@@ -143,11 +143,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BX-pc-27p">
-                                <rect key="frame" x="438" y="289" width="100" height="100"/>
+                                <rect key="frame" x="438" y="258" width="100" height="100"/>
                                 <animations/>
                                 <state key="normal" image="darthvader"/>
                                 <connections>
                                     <action selector="playLowPitch:" destination="gka-9m-QYv" eventType="touchUpInside" id="YlL-c8-7sC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzV-I5-Obm">
+                                <rect key="frame" x="62" y="408" width="100" height="100"/>
+                                <animations/>
+                                <state key="normal" image="reverb"/>
+                                <connections>
+                                    <action selector="playWithReverb:" destination="gka-9m-QYv" eventType="touchUpInside" id="wlf-Sr-Rsf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -155,15 +163,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="6BX-pc-27p" secondAttribute="trailing" constant="42" id="3xU-sP-HN7"/>
-                            <constraint firstItem="6BX-pc-27p" firstAttribute="top" secondItem="4Hv-1l-Hf1" secondAttribute="bottom" constant="81" id="81t-Ud-V38"/>
+                            <constraint firstItem="6BX-pc-27p" firstAttribute="top" secondItem="4Hv-1l-Hf1" secondAttribute="bottom" constant="50" id="81t-Ud-V38"/>
                             <constraint firstItem="zje-Wb-o9o" firstAttribute="centerX" secondItem="H6B-fP-zlc" secondAttribute="centerX" id="DpQ-nv-Vx0"/>
                             <constraint firstItem="mau-ho-8pX" firstAttribute="leading" secondItem="H6B-fP-zlc" secondAttribute="leadingMargin" constant="42" id="GbV-Ld-gks"/>
+                            <constraint firstItem="zzV-I5-Obm" firstAttribute="top" secondItem="xwX-aP-6b1" secondAttribute="bottom" constant="50" id="Ii9-hi-rAi"/>
                             <constraint firstItem="xwX-aP-6b1" firstAttribute="leading" secondItem="H6B-fP-zlc" secondAttribute="leadingMargin" constant="42" id="RjL-Ik-n4B"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Hv-1l-Hf1" secondAttribute="trailing" constant="42" id="Tb7-0u-Pmd"/>
                             <constraint firstItem="4Hv-1l-Hf1" firstAttribute="top" secondItem="YuR-pw-Iue" secondAttribute="bottom" constant="44" id="UYK-ZD-U8Q"/>
                             <constraint firstItem="XA3-AJ-PPx" firstAttribute="top" secondItem="zje-Wb-o9o" secondAttribute="bottom" constant="44" id="VWm-GX-04y"/>
                             <constraint firstItem="mau-ho-8pX" firstAttribute="top" secondItem="YuR-pw-Iue" secondAttribute="bottom" constant="44" id="XHw-bh-QuA"/>
-                            <constraint firstItem="xwX-aP-6b1" firstAttribute="top" secondItem="mau-ho-8pX" secondAttribute="bottom" constant="81" id="gNE-93-h3s"/>
+                            <constraint firstItem="xwX-aP-6b1" firstAttribute="top" secondItem="mau-ho-8pX" secondAttribute="bottom" constant="50" id="gNE-93-h3s"/>
+                            <constraint firstItem="zzV-I5-Obm" firstAttribute="leading" secondItem="H6B-fP-zlc" secondAttribute="leadingMargin" constant="42" id="kvU-0m-kCT"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -196,6 +206,7 @@
         <image name="darthvader" width="100" height="100"/>
         <image name="fast" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="reverb" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>
         <image name="stop" width="50" height="50"/>
     </resources>
